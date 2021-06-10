@@ -25,11 +25,6 @@ class History extends React.Component {
         <div>
           <div style={{ textAlign: "center" }}>
             <div>
-              <h3 style={{ margin: 4, textAlign: "center" }}>
-                Historical Weather
-              </h3>
-            </div>
-            <div>
               <svg
                 width="200px"
                 height="200px"
@@ -134,15 +129,12 @@ class History extends React.Component {
       );
     }
 
-    this.props.pastWeather.sort(function(a, b) {
+    this.props.pastWeather.sort(function (a, b) {
       return b.daily.data[0].time - a.daily.data[0].time;
     });
     const pages = this.props.data.pastPages;
     return (
       <div style={{ textAlign: "center" }}>
-        <div>
-          <h3 style={{ margin: 4 }}>Historical Weather</h3>
-        </div>
         <div>
           <div
             style={{

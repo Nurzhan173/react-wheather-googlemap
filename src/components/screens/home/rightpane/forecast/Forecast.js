@@ -25,11 +25,7 @@ class Forecast extends React.Component {
         <div>
           <div style={{ textAlign: "center" }}>
             <div>
-              <h3 style={{ margin: 4, textAlign: "center" }}>
-                Weather Forecast
-              </h3>
-            </div>
-            <div>
+
               <svg
                 width="200px"
                 height="200px"
@@ -134,15 +130,13 @@ class Forecast extends React.Component {
       );
     }
 
-    this.props.futureWeather.sort(function(a, b) {
+    this.props.futureWeather.sort(function (a, b) {
       return a.daily.data[0].time - b.daily.data[0].time;
     });
     const pages = this.props.data.forecastPages;
     return (
       <div style={{ textAlign: "center" }}>
-        <div>
-          <h3 style={{ margin: 4 }}>Weather Forecast</h3>
-        </div>
+
         <div>
           <div
             style={{

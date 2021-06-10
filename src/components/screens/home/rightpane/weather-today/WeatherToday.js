@@ -6,6 +6,7 @@ import ReactAnimatedWeather from "react-animated-weather";
 import _ from "lodash";
 import { updateCurrentWeather } from "../../../../redux/action/actions";
 import { epochToDate, epochToTime, getTimeZone } from "../../../../utils/utils";
+import moment from "moment";
 
 class WeatherToday extends React.Component {
   render() {
@@ -36,9 +37,9 @@ class WeatherToday extends React.Component {
         this.props.currentWeather.currently.time,
         offset
       );
-      currentDate = dateFormat(currentDate, "fullDate");
-      //currentDate = dateFormat(currentDate, "dddd, mmmm dS, yyyy, h:MM:ss");
-
+      // currentDate = dateFormat(currentDate, "fullDate");
+      // currentDate = dateFormat(currentDate, "dddd, mmmm dS, yyyy, h:MM:ss");
+      currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
       const lat = this.props.currentLocation.coordinate.lat;
       const long = this.props.currentLocation.coordinate.long;
       timeZone = this.props.currentWeather.timezone;
@@ -57,74 +58,79 @@ class WeatherToday extends React.Component {
 
     return (
       <div style={{ overflow: "auto" }}>
-        <div
-          style={{
-            color: "black",
-            float: "left",
-            clear: "left",
-            paddingTop: "10px"
-          }}
-        >
-          <ReactAnimatedWeather
-            icon={myIcon.toUpperCase().replace(/-/g, "_")}
-            color={"black"}
-            size={50}
-            animate={true}
-          />
-        </div>
-        <div style={{ float: "left", padding: "10px" }}>
-          <div
-            style={{
-              fontWeight: "bold",
-              fontSize: `25px`,
-              float: "left",
-              clear: "left"
-            }}
-          >
-            {_.startCase(this.props.currentLocation.address)}
-          </div>
-          <table style={{ float: "left", clear: "left", textAlign: "left" }}>
-            <tbody>
-              <tr>
-                <td>
-                  lat: {this.props.currentLocation.coordinate.lat}, long:{" "}
-                  {this.props.currentLocation.coordinate.long}
-                </td>
-              </tr>
-              <tr>
-                <td>Today: {myForecast}</td>
-              </tr>
-              <tr>
-                <td>
-                  Temp High: {myTempHigh}, Low: {myTempLow}, Current:{" "}
-                  {myCurrentTemp}{" "}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
 
-        <div style={{ float: "right", marginTop: "35px", marginRight: "40px" }}>
-          <table style={{ textAlign: "left" }}>
-            <tbody>
-              <tr>
-                <td style={{ width: "100px" }}>Date:</td>
-                <td>{currentDate} </td>
-              </tr>
-              <tr>
-                <td>Time Zone:</td>
-                <td>{timeZone}</td>
-              </tr>
-              <tr>
-                <td>Sunrise:</td>
-                <td>{sunRiseTime}</td>
-              </tr>
-              <tr>
-                <td>Sunset:</td>
-                <td>{sunSetTime}</td>
-              </tr>
-            </tbody>
-          </table>
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
+          <div style={{ padding: "10px" }}>
+            <div
+              style={{
+                fontWeight: "bold",
+                fontSize: `25px`,
+                float: "left",
+                clear: "left"
+              }}
+            >
+              {_.startCase(this.props.currentLocation.address)}
+            </div>
+
+            <div
+              style={{
+                color: "black",
+                float: "left",
+                clear: "left",
+                paddingTop: "10px"
+              }}
+            >
+              <ReactAnimatedWeather
+                icon={myIcon.toUpperCase().replace(/-/g, "_")}
+                color={"black"}
+                size={50}
+                animate={true}
+              />
+            </div>
+
+            <table style={{ float: "left", clear: "left", textAlign: "left" }}>
+              <tbody>
+                <tr>
+                  <td>
+                    lat: {this.props.currentLocation.coordinate.lat}, long:{" "}
+                    {this.props.currentLocation.coordinate.long}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Today: {myForecast}</td>
+                </tr>
+                <tr>
+                  <td>
+                    Temp High: {myTempHigh}, Low: {myTempLow}, Current:{" "}
+                    {myCurrentTemp}{" "}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style={{ float: "right", marginTop: "35px", marginRight: "40px" }}>
+            <table style={{ textAlign: "left" }}>
+              <tbody>
+                <tr>
+                  <td style={{ width: "100px" }}>Date:</td>
+                  <td>{currentDate} </td>
+                </tr>
+                <tr>
+                  <td>Time Zone:</td>
+                  <td>{timeZone}</td>
+                </tr>
+                <tr>
+                  <td>Sunrise:</td>
+                  <td>{sunRiseTime}</td>
+                </tr>
+                <tr>
+                  <td>Sunset:</td>
+                  <td>{sunSetTime}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     );

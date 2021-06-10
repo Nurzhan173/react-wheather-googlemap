@@ -38,10 +38,10 @@ store.subscribe(() => {
 */
 
 //if (store.getState().searchLocation === undefined) {
-
-const lat = 38.8473;
-const long = -77.0588;
-const address = "Alexandria, VA, USA";
+// lat: 43.2220146, long: 76.8512485
+const lat = 43.2220146;
+const long = 76.8512485;
+const address = "Almaty, Kazakhstan";
 
 let currentDay = new Date();
 currentDay.setDate(currentDay.getDate() + 1);

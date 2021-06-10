@@ -30,7 +30,7 @@ class Home extends Component {
   }
   render() {
     return (
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div style={{ display: "flex", flexDirection: "column" }}>
         <div style={{ flex: 3.5 }}>
           <LeftPane />
         </div>

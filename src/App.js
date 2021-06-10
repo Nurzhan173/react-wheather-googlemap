@@ -2,23 +2,18 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Home from "./components/screens/home/Home";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img
-            src="https://cdn3.iconfinder.com/data/icons/weather-16/256/Tornado-512.png"
-            className="App-logo"
-            alt="logo"
-            style={{ float: "left", marginLeft: "0", marginTop: "5px" }}
-          />
           <h1
             className="App-title"
             style={{ float: "left", marginTop: "20px" }}
           >
-            My Weather App
+            
           </h1>
         </header>
         <Home />
@@ -26,10 +21,11 @@ class App extends Component {
           style={{
             height: "60px",
             backgroundColor: "#272727",
-            padding: "10px"
+            padding: "10px",
+            marginTop: "100px"
           }}
         >
-          <div style={{ float: "right", marginRight: "30px" }}>
+          {/* <div style={{ float: "right", marginRight: "30px" }}>
             <img
               src="https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_linux-512.png"
               style={{ width: "50px", height: "50px", marginRight: "5px" }}
@@ -40,7 +36,7 @@ class App extends Component {
               style={{ width: "50px", height: "50px" }}
               alt="facebook logo"
             />
-          </div>
+          </div> */}
 
           <div
             style={{
@@ -51,7 +47,7 @@ class App extends Component {
               fontStyle: "italic"
             }}
           >
-            Please note Free DarkSky API is limited to 1000 calls/per day.
+            {/* Please note Free DarkSky API is limited to 1000 calls/per day. */}
           </div>
         </footer>
       </div>

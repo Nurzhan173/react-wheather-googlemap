@@ -1,7 +1,7 @@
 /* jshint esversion: 6 */
 import * as config from "../config/config";
 import { store } from "../redux/store/store";
-
+import moment from "moment"
 export const addKeys = (val, key) => ({ key: "" + key, ...val });
 
 export const epochToDate = (epochTime, offset) => {
@@ -12,6 +12,10 @@ export const epochToDate = (epochTime, offset) => {
     .match(/(\d{4}\-\d{2}\-\d{2})T(\d{2}:\d{2}:\d{2})/);
   return iso[1];
 };
+
+export const timeStampToDate = (epochTime) => {
+  return moment.unix(epochTime).format("MM/DD/YYYY");;
+}
 
 export const epochToDateTime = (epochTime, offset) => {
   const offsetValue = parseInt(offset) * 60 * 60;
@@ -58,7 +62,7 @@ export const getPrevious30Dates = baseDate => {
     prev30Dates.push(myDate);
   }
 
-  return prev30Dates.sort(function(a, b) {
+  return prev30Dates.sort(function (a, b) {
     return b.getTime() - a.getTime();
   });
 };
